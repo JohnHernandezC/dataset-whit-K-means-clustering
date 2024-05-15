@@ -23,12 +23,10 @@ print(data.describe())
 # Verificar si hay valores faltantes
 print(data.isnull().sum())
 
-# No hay valores faltantes, por lo que no es necesario imputar datos
 
-# Paso 3: Seleccionar características relevantes
-# No hay selección de características explícita en este ejemplo debido a la simplicidad del dataset
 
-# Paso 4: Entrenar el modelo K-means
+
+# Paso 3: Entrenar el modelo K-means
 # Seleccionar las características relevantes para entrenar el modelo
 X = data[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']]
 
@@ -43,7 +41,7 @@ k = 5
 kmeans = KMeans(n_clusters=k, random_state=42)
 kmeans.fit(X_scaled)
 
-# Paso 5: Evaluar el desempeño del modelo
+# Paso 4: Evaluar el desempeño del modelo
 # Calcular el coeficiente de Silhouette
 silhouette_avg = silhouette_score(X_scaled, kmeans.labels_)
 print("Coeficiente de Silhouette:", silhouette_avg)
@@ -58,6 +56,5 @@ data['Cluster'] = kmeans.labels_
 sns.pairplot(data, hue='Cluster', palette='Dark2')
 plt.show()
 
-# Paso 7: Interpretar y analizar los resultados
-# Interpretar los clusters y analizar las características de cada grupo
+
 
